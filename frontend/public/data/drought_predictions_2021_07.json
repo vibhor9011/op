@@ -1,0 +1,603 @@
+{
+  "hazard": "drought",
+  "granularity": "month",
+  "period": "2021-07",
+  "label_source": "index_derived",
+  "warning": "Demo: index-based - Agricultural & Meteorological Drought Index (SPI-3 + VCI)",
+  "zones": [
+    {
+      "id": "G01",
+      "name": "Baksa",
+      "p_low": 0.2172,
+      "p_mid": 0.2614,
+      "p_high": 0.3056,
+      "exposure": 0.1321,
+      "priority": 0.0345,
+      "rank": 18,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 358.4,
+        "rain_cum3m_mm": 1242.0,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G02",
+      "name": "Barpeta",
+      "p_low": 0.3034,
+      "p_mid": 0.3753,
+      "p_high": 0.4473,
+      "exposure": 0.1209,
+      "priority": 0.0454,
+      "rank": 16,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 797.7,
+        "rain_cum3m_mm": 1086.4,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G03",
+      "name": "Biswanath",
+      "p_low": 0.7057,
+      "p_mid": 0.7389,
+      "p_high": 0.772,
+      "exposure": 0.0825,
+      "priority": 0.061,
+      "rank": 12,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 150.4,
+        "rain_cum3m_mm": 580.7,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G04",
+      "name": "Bongaigaon",
+      "p_low": 0.4916,
+      "p_mid": 0.5508,
+      "p_high": 0.6101,
+      "exposure": 0.0308,
+      "priority": 0.017,
+      "rank": 26,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 404.5,
+        "rain_cum3m_mm": 717.5,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G05",
+      "name": "Cachar",
+      "p_low": 0.5859,
+      "p_mid": 0.6044,
+      "p_high": 0.6229,
+      "exposure": 0.2337,
+      "priority": 0.1412,
+      "rank": 4,
+      "robust": true,
+      "drivers": {
+        "rain_total_mm": 182.8,
+        "rain_cum3m_mm": 602.0,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G06",
+      "name": "Charaideo",
+      "p_low": 0.4769,
+      "p_mid": 0.5203,
+      "p_high": 0.5638,
+      "exposure": 0.0289,
+      "priority": 0.015,
+      "rank": 27,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 340.3,
+        "rain_cum3m_mm": 894.1,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G07",
+      "name": "Chirang",
+      "p_low": 0.3151,
+      "p_mid": 0.3586,
+      "p_high": 0.4021,
+      "exposure": 0.094,
+      "priority": 0.0337,
+      "rank": 20,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 487.9,
+        "rain_cum3m_mm": 1039.5,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G08",
+      "name": "Darrang",
+      "p_low": 0.1349,
+      "p_mid": 0.158,
+      "p_high": 0.1811,
+      "exposure": 0.0679,
+      "priority": 0.0107,
+      "rank": 29,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 518.1,
+        "rain_cum3m_mm": 1061.2,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G09",
+      "name": "Dhemaji",
+      "p_low": 0.2759,
+      "p_mid": 0.3458,
+      "p_high": 0.4158,
+      "exposure": 0.1366,
+      "priority": 0.0472,
+      "rank": 14,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 351.5,
+        "rain_cum3m_mm": 1690.7,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G10",
+      "name": "Dhubri",
+      "p_low": 0.2977,
+      "p_mid": 0.3129,
+      "p_high": 0.328,
+      "exposure": 0.0655,
+      "priority": 0.0205,
+      "rank": 23,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 359.7,
+        "rain_cum3m_mm": 1171.4,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G11",
+      "name": "Dibrugarh",
+      "p_low": 0.5329,
+      "p_mid": 0.5686,
+      "p_high": 0.6042,
+      "exposure": 0.204,
+      "priority": 0.116,
+      "rank": 7,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 206.1,
+        "rain_cum3m_mm": 966.6,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G12",
+      "name": "Dima Hasao",
+      "p_low": 0.4322,
+      "p_mid": 0.4764,
+      "p_high": 0.5205,
+      "exposure": 0.3171,
+      "priority": 0.1511,
+      "rank": 3,
+      "robust": true,
+      "drivers": {
+        "rain_total_mm": 800.8,
+        "rain_cum3m_mm": 1484.8,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G13",
+      "name": "Goalpara",
+      "p_low": 0.3059,
+      "p_mid": 0.3528,
+      "p_high": 0.3998,
+      "exposure": 0.0976,
+      "priority": 0.0344,
+      "rank": 19,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 618.0,
+        "rain_cum3m_mm": 1145.7,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G14",
+      "name": "Golaghat",
+      "p_low": 0.76,
+      "p_mid": 0.8015,
+      "p_high": 0.8431,
+      "exposure": 0.2146,
+      "priority": 0.172,
+      "rank": 2,
+      "robust": true,
+      "drivers": {
+        "rain_total_mm": 263.0,
+        "rain_cum3m_mm": 739.3,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G15",
+      "name": "Hailakandi",
+      "p_low": 0.7076,
+      "p_mid": 0.7964,
+      "p_high": 0.8852,
+      "exposure": 0.0481,
+      "priority": 0.0383,
+      "rank": 17,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 428.2,
+        "rain_cum3m_mm": 759.4,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G16",
+      "name": "Hojai",
+      "p_low": 0.3135,
+      "p_mid": 0.3537,
+      "p_high": 0.394,
+      "exposure": 0.0581,
+      "priority": 0.0205,
+      "rank": 23,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 604.1,
+        "rain_cum3m_mm": 1208.9,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G17",
+      "name": "Jorhat",
+      "p_low": 0.1423,
+      "p_mid": 0.1738,
+      "p_high": 0.2053,
+      "exposure": 0.1027,
+      "priority": 0.0178,
+      "rank": 25,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 819.4,
+        "rain_cum3m_mm": 1531.0,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G18",
+      "name": "Kamrup",
+      "p_low": 0.1172,
+      "p_mid": 0.1361,
+      "p_high": 0.155,
+      "exposure": 0.1827,
+      "priority": 0.0249,
+      "rank": 22,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 462.0,
+        "rain_cum3m_mm": 1526.3,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G19",
+      "name": "Kamrup Metropolitan",
+      "p_low": 0.5448,
+      "p_mid": 0.5673,
+      "p_high": 0.5897,
+      "exposure": 0.023,
+      "priority": 0.013,
+      "rank": 28,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 420.6,
+        "rain_cum3m_mm": 1141.9,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G20",
+      "name": "Karbi Anglong",
+      "p_low": 0.7267,
+      "p_mid": 0.7515,
+      "p_high": 0.7763,
+      "exposure": 0.5,
+      "priority": 0.3757,
+      "rank": 1,
+      "robust": true,
+      "drivers": {
+        "rain_total_mm": 308.1,
+        "rain_cum3m_mm": 1077.4,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G21",
+      "name": "Karimganj",
+      "p_low": 0.4858,
+      "p_mid": 0.5236,
+      "p_high": 0.5615,
+      "exposure": 0.0872,
+      "priority": 0.0457,
+      "rank": 15,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 456.5,
+        "rain_cum3m_mm": 1143.6,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G22",
+      "name": "Kokrajhar",
+      "p_low": 0.4344,
+      "p_mid": 0.471,
+      "p_high": 0.5077,
+      "exposure": 0.1843,
+      "priority": 0.0868,
+      "rank": 9,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 247.0,
+        "rain_cum3m_mm": 1124.3,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G23",
+      "name": "Lakhimpur",
+      "p_low": 0.6959,
+      "p_mid": 0.7255,
+      "p_high": 0.7551,
+      "exposure": 0.1752,
+      "priority": 0.1271,
+      "rank": 5,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 272.8,
+        "rain_cum3m_mm": 993.7,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G24",
+      "name": "Majuli",
+      "p_low": 0.6732,
+      "p_mid": 0.6987,
+      "p_high": 0.7243,
+      "exposure": 0.0082,
+      "priority": 0.0057,
+      "rank": 32,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 276.9,
+        "rain_cum3m_mm": 1093.1,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G25",
+      "name": "Morigaon",
+      "p_low": 0.4124,
+      "p_mid": 0.4611,
+      "p_high": 0.5098,
+      "exposure": 0.062,
+      "priority": 0.0286,
+      "rank": 21,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 440.8,
+        "rain_cum3m_mm": 907.6,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G26",
+      "name": "Nagaon",
+      "p_low": 0.3136,
+      "p_mid": 0.3713,
+      "p_high": 0.4289,
+      "exposure": 0.1425,
+      "priority": 0.0529,
+      "rank": 13,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 331.4,
+        "rain_cum3m_mm": 1581.2,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G27",
+      "name": "Nalbari",
+      "p_low": 0.2501,
+      "p_mid": 0.2841,
+      "p_high": 0.3182,
+      "exposure": 0.0278,
+      "priority": 0.0079,
+      "rank": 30,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 780.3,
+        "rain_cum3m_mm": 1563.6,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G28",
+      "name": "Sivasagar",
+      "p_low": 0.0715,
+      "p_mid": 0.0951,
+      "p_high": 0.1186,
+      "exposure": 0.0669,
+      "priority": 0.0064,
+      "rank": 31,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 607.6,
+        "rain_cum3m_mm": 1624.2,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G29",
+      "name": "Sonitpur",
+      "p_low": 0.5266,
+      "p_mid": 0.5964,
+      "p_high": 0.6663,
+      "exposure": 0.2087,
+      "priority": 0.1245,
+      "rank": 6,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 681.0,
+        "rain_cum3m_mm": 1059.8,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G30",
+      "name": "South Salmara Mankachar",
+      "p_low": 0.1901,
+      "p_mid": 0.25,
+      "p_high": 0.3098,
+      "exposure": 0.0,
+      "priority": 0.0,
+      "rank": 33,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 743.7,
+        "rain_cum3m_mm": 1299.4,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G31",
+      "name": "Tinsukia",
+      "p_low": 0.212,
+      "p_mid": 0.2596,
+      "p_high": 0.3072,
+      "exposure": 0.2356,
+      "priority": 0.0612,
+      "rank": 11,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 234.9,
+        "rain_cum3m_mm": 1212.1,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G32",
+      "name": "Udalguri",
+      "p_low": 0.7107,
+      "p_mid": 0.7452,
+      "p_high": 0.7798,
+      "exposure": 0.1,
+      "priority": 0.0745,
+      "rank": 10,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 360.1,
+        "rain_cum3m_mm": 1072.0,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    },
+    {
+      "id": "G33",
+      "name": "West Karbi Anglong",
+      "p_low": 0.5428,
+      "p_mid": 0.5718,
+      "p_high": 0.6008,
+      "exposure": 0.1804,
+      "priority": 0.1032,
+      "rank": 8,
+      "robust": false,
+      "drivers": {
+        "rain_total_mm": 545.6,
+        "rain_cum3m_mm": 1154.8,
+        "rain_anom_mm": null
+      },
+      "observed_flood_km2": null,
+      "observed_flood_frac": null
+    }
+  ]
+}

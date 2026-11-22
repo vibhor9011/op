@@ -1,0 +1,9 @@
+{
+  "version": "2.4.0",
+  "data_mode": "static_offline_cache",
+  "warning": "Decision support only; confirm with ASDMA/IMD official advisories.",
+  "polygon_count": 33,
+  "flood_periods_count": 72,
+  "drought_periods_count": 72,
+  "files_packaged": 149
+}

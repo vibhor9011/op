@@ -1,0 +1,1890 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OrbitGuard Flood Early Warning & Response Prioritisation API",
+    "description": "Operational decision-support service for the Assam State Disaster Management Authority (ASDMA). Serves precomputed hazard probabilities, conformalized prediction intervals, multi-factor exposure scores, response priority rankings, and rule-based advisories. Strict Constraint: Serves ONLY precomputed artifacts; never runs ML models live.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Get Health",
+        "description": "Service health, data mode, and startup integrity self-check verification.",
+        "operationId": "get_health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hazards": {
+      "get": {
+        "tags": [
+          "Hazard Catalog"
+        ],
+        "summary": "Get Hazards",
+        "description": "List supported multi-hazard domains.\nHazards with no outputs show 'Planned - no data yet' with no numbers.",
+        "operationId": "get_hazards_hazards_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HazardsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/periods": {
+      "get": {
+        "tags": [
+          "Hazard Catalog"
+        ],
+        "summary": "Get Periods",
+        "description": "List all available precomputed monthly periods (YYYY-MM).",
+        "operationId": "get_periods_periods_get",
+        "parameters": [
+          {
+            "name": "hazard",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Hazard domain identifier",
+              "default": "flood",
+              "title": "Hazard"
+            },
+            "description": "Hazard domain identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/zones": {
+      "get": {
+        "tags": [
+          "Early Warning"
+        ],
+        "summary": "Get Zones",
+        "description": "Retrieve district zones for a period with calibrated bounds, exposure scores, priority ranks, and advisories.",
+        "operationId": "get_zones_zones_get",
+        "parameters": [
+          {
+            "name": "hazard",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Hazard domain",
+              "default": "flood",
+              "title": "Hazard"
+            },
+            "description": "Hazard domain"
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target period (YYYY-MM)",
+              "default": "2022-06",
+              "title": "Period"
+            },
+            "description": "Target period (YYYY-MM)"
+          },
+          {
+            "name": "lead",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Forecast lead time ('0_month' or '1_month')",
+              "default": "1_month",
+              "title": "Lead"
+            },
+            "description": "Forecast lead time ('0_month' or '1_month')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZonesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ranking": {
+      "get": {
+        "tags": [
+          "Prioritization"
+        ],
+        "summary": "Get Ranking",
+        "description": "Retrieve disaster response priority ranking sorted by urgency score.",
+        "operationId": "get_ranking_ranking_get",
+        "parameters": [
+          {
+            "name": "hazard",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Hazard domain",
+              "default": "flood",
+              "title": "Hazard"
+            },
+            "description": "Hazard domain"
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target period (YYYY-MM)",
+              "default": "2022-06",
+              "title": "Period"
+            },
+            "description": "Target period (YYYY-MM)"
+          },
+          {
+            "name": "lead",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Forecast lead time ('0_month' or '1_month')",
+              "default": "1_month",
+              "title": "Lead"
+            },
+            "description": "Forecast lead time ('0_month' or '1_month')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RankingResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/advisories": {
+      "get": {
+        "tags": [
+          "Advisories"
+        ],
+        "summary": "Get Advisories",
+        "description": "Retrieve full operational early warning advisories across all 33 administrative districts.",
+        "operationId": "get_advisories_advisories_get",
+        "parameters": [
+          {
+            "name": "hazard",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Hazard domain",
+              "default": "flood",
+              "title": "Hazard"
+            },
+            "description": "Hazard domain"
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target period (YYYY-MM)",
+              "default": "2022-06",
+              "title": "Period"
+            },
+            "description": "Target period (YYYY-MM)"
+          },
+          {
+            "name": "lead",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Forecast lead time ('0_month' or '1_month')",
+              "default": "1_month",
+              "title": "Lead"
+            },
+            "description": "Forecast lead time ('0_month' or '1_month')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvisoriesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/overview": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "Get Overview",
+        "description": "Retrieve high-level disaster management overview: alert counts, top priority district, and mean exposure.",
+        "operationId": "get_overview_overview_get",
+        "parameters": [
+          {
+            "name": "hazard",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Hazard domain",
+              "default": "flood",
+              "title": "Hazard"
+            },
+            "description": "Hazard domain"
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target period (YYYY-MM)",
+              "default": "2022-06",
+              "title": "Period"
+            },
+            "description": "Target period (YYYY-MM)"
+          },
+          {
+            "name": "lead",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Forecast lead time ('0_month' or '1_month')",
+              "default": "1_month",
+              "title": "Lead"
+            },
+            "description": "Forecast lead time ('0_month' or '1_month')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OverviewResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/geometry": {
+      "get": {
+        "tags": [
+          "Spatial Data"
+        ],
+        "summary": "Get Geometry",
+        "description": "Retrieve canonical 33-district administrative boundary GeoJSON FeatureCollection.",
+        "operationId": "get_geometry_geometry_get",
+        "parameters": [
+          {
+            "name": "hazard",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Hazard domain",
+              "default": "flood",
+              "title": "Hazard"
+            },
+            "description": "Hazard domain"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/timeline": {
+      "get": {
+        "tags": [
+          "Timeline"
+        ],
+        "summary": "Get Timeline",
+        "description": "Retrieve historical progression of risk intervals and precipitation across all precomputed monsoon periods.",
+        "operationId": "get_timeline_timeline_get",
+        "parameters": [
+          {
+            "name": "zone_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Target zone geometry ID (G01..G33). If omitted, returns statewide average.",
+              "title": "Zone Id"
+            },
+            "description": "Target zone geometry ID (G01..G33). If omitted, returns statewide average."
+          },
+          {
+            "name": "hazard",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Hazard domain",
+              "default": "flood",
+              "title": "Hazard"
+            },
+            "description": "Hazard domain"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TimelineResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/explain/{zone_id}": {
+      "get": {
+        "tags": [
+          "Explainability"
+        ],
+        "summary": "Get Explain",
+        "description": "Retrieve top-5 local SHAP causal feature drivers and plain-language attributions for a district.",
+        "operationId": "get_explain_explain__zone_id__get",
+        "parameters": [
+          {
+            "name": "zone_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Zone identifier (e.g., 'G09', 'AS_DHEMAJI', or 'dhemaji')",
+              "title": "Zone Id"
+            },
+            "description": "Zone identifier (e.g., 'G09', 'AS_DHEMAJI', or 'dhemaji')"
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target period (YYYY-MM)",
+              "default": "2022-06",
+              "title": "Period"
+            },
+            "description": "Target period (YYYY-MM)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExplainResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/extent": {
+      "get": {
+        "tags": [
+          "Spatial Data"
+        ],
+        "summary": "Get Extent",
+        "description": "Retrieve Sentinel-1 SAR flood inundation footprint GeoJSON (404 with message if absent).",
+        "operationId": "get_extent_extent_get",
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Event period (YYYY-MM)",
+              "default": "2019-07",
+              "title": "Period"
+            },
+            "description": "Event period (YYYY-MM)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "tags": [
+          "Model Audit"
+        ],
+        "summary": "Get Metrics",
+        "description": "Retrieve model cross-validation results, event backtests, and deck claims audit table.",
+        "operationId": "get_metrics_metrics_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/provenance": {
+      "get": {
+        "tags": [
+          "Audit & Provenance"
+        ],
+        "summary": "Get Provenance",
+        "description": "Retrieve dataset provenance, synthetic circularity findings, SAR non-independence caveat, and operational limitations.",
+        "operationId": "get_provenance_provenance_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProvenanceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "tags": [
+          "Frontend Compatibility"
+        ],
+        "summary": "Api Health",
+        "description": "Frontend health check adapter.",
+        "operationId": "api_health_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dashboard": {
+      "get": {
+        "tags": [
+          "Frontend Compatibility"
+        ],
+        "summary": "Api Dashboard",
+        "description": "Adapter translating real 33-district model predictions into the frontend dashboard structure.",
+        "operationId": "api_dashboard_api_dashboard_get",
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "2022-06",
+              "title": "Period"
+            }
+          },
+          {
+            "name": "lead",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "1_month",
+              "title": "Lead"
+            }
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Day"
+            }
+          },
+          {
+            "name": "rain_boost",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 0.0,
+              "title": "Rain Boost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/flood-extent": {
+      "get": {
+        "tags": [
+          "Frontend Compatibility"
+        ],
+        "summary": "Api Flood Extent",
+        "description": "Frontend flood extent layer adapter.",
+        "operationId": "api_flood_extent_api_flood_extent_get",
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "2019-07",
+              "title": "Period"
+            }
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Day"
+            }
+          },
+          {
+            "name": "rain_boost",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 0.0,
+              "title": "Rain Boost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AdvisoriesResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "hazard": {
+            "type": "string",
+            "title": "Hazard"
+          },
+          "period": {
+            "type": "string",
+            "title": "Period"
+          },
+          "lead": {
+            "type": "string",
+            "title": "Lead"
+          },
+          "advisories": {
+            "items": {
+              "$ref": "#/components/schemas/ZoneAdvisoryItem"
+            },
+            "type": "array",
+            "title": "Advisories"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "hazard",
+          "period",
+          "lead",
+          "advisories"
+        ],
+        "title": "AdvisoriesResponse",
+        "description": "Full operational advisory collection for all districts."
+      },
+      "AdvisoryModel": {
+        "properties": {
+          "level": {
+            "type": "string",
+            "title": "Level",
+            "description": "Alert level: Severe, Warning, Watch, or Normal"
+          },
+          "headline": {
+            "type": "string",
+            "title": "Headline",
+            "description": "Broadcast headline"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reasons",
+            "description": "Deterministic causal factors and rainfall drivers"
+          },
+          "recommended_actions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Recommended Actions",
+            "description": "SDRF and district operational response actions"
+          },
+          "confidence": {
+            "type": "string",
+            "title": "Confidence",
+            "description": "Confidence categorization based on predictive band width"
+          },
+          "disclaimer": {
+            "type": "string",
+            "title": "Disclaimer",
+            "description": "Mandatory official verification disclaimer",
+            "default": "Decision support only; confirm with ASDMA/IMD official advisories."
+          }
+        },
+        "type": "object",
+        "required": [
+          "level",
+          "headline",
+          "reasons",
+          "recommended_actions",
+          "confidence"
+        ],
+        "title": "AdvisoryModel",
+        "description": "Actionable operational advisory for disaster management authorities."
+      },
+      "DriverExplanation": {
+        "properties": {
+          "feature": {
+            "type": "string",
+            "title": "Feature",
+            "examples": [
+              "rain_cum3m_mm"
+            ]
+          },
+          "importance": {
+            "type": "number",
+            "title": "Importance",
+            "description": "Attribution score / absolute SHAP importance"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value",
+            "description": "Local feature magnitude"
+          },
+          "plain_language": {
+            "type": "string",
+            "title": "Plain Language",
+            "description": "Human-readable explanation of driver impact"
+          }
+        },
+        "type": "object",
+        "required": [
+          "feature",
+          "importance",
+          "plain_language"
+        ],
+        "title": "DriverExplanation",
+        "description": "Attribution item explaining a predictive factor."
+      },
+      "ExplainResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "zone_id": {
+            "type": "string",
+            "title": "Zone Id"
+          },
+          "district": {
+            "type": "string",
+            "title": "District"
+          },
+          "period": {
+            "type": "string",
+            "title": "Period"
+          },
+          "top_drivers": {
+            "items": {
+              "$ref": "#/components/schemas/DriverExplanation"
+            },
+            "type": "array",
+            "title": "Top Drivers"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "zone_id",
+          "district",
+          "period",
+          "top_drivers"
+        ],
+        "title": "ExplainResponse",
+        "description": "Top-5 SHAP feature explanations for a specified district zone."
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HazardItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "examples": [
+              "flood"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "examples": [
+              "Riverine & Flash Inundation"
+            ]
+          },
+          "status_badge": {
+            "type": "string",
+            "title": "Status Badge",
+            "description": "Honest badge: 'Operational Prototype', 'Demo: Index-Based', or 'Planned - no data yet'"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "examples": [
+              "Multi-hazard early warning and response prioritization for Assam"
+            ]
+          },
+          "granularity": {
+            "type": "string",
+            "title": "Granularity",
+            "default": "month",
+            "examples": [
+              "month"
+            ]
+          },
+          "lead_times": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Lead Times"
+          },
+          "lead_wording": {
+            "type": "string",
+            "title": "Lead Wording",
+            "description": "Approved lead phrasing derived from metrics",
+            "default": "1-Month Risk Outlook"
+          },
+          "spatial_units": {
+            "type": "integer",
+            "title": "Spatial Units",
+            "description": "Number of administrative polygon units",
+            "default": 33
+          },
+          "has_outputs": {
+            "type": "boolean",
+            "title": "Has Outputs",
+            "description": "Whether precomputed output predictions exist",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status_badge",
+          "description"
+        ],
+        "title": "HazardItem",
+        "description": "Hazard domain descriptor with honest validation status."
+      },
+      "HazardsResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "hazards": {
+            "items": {
+              "$ref": "#/components/schemas/HazardItem"
+            },
+            "type": "array",
+            "title": "Hazards"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "hazards"
+        ],
+        "title": "HazardsResponse",
+        "description": "List of supported multi-hazard domains."
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "service": {
+            "type": "string",
+            "title": "Service",
+            "description": "Service identifier",
+            "default": "orbitguard-early-warning-service"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "description": "Semantic API version",
+            "default": "1.0.0"
+          },
+          "data_mode": {
+            "type": "string",
+            "title": "Data Mode",
+            "description": "Active data mode ('live' or 'mock')",
+            "default": "live"
+          },
+          "validated_files_count": {
+            "type": "integer",
+            "title": "Validated Files Count",
+            "description": "Count of validated precomputed output files",
+            "default": 0
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp",
+            "description": "ISO 8601 UTC timestamp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "timestamp"
+        ],
+        "title": "HealthResponse",
+        "description": "Service health status response."
+      },
+      "MetricsResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "results": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Results"
+          },
+          "event_backtest": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Event Backtest"
+          },
+          "claims_table": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Claims Table"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "results",
+          "event_backtest",
+          "claims_table"
+        ],
+        "title": "MetricsResponse",
+        "description": "Model validation, backtest, and pitch deck claims verification."
+      },
+      "OverviewResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "hazard": {
+            "type": "string",
+            "title": "Hazard"
+          },
+          "period": {
+            "type": "string",
+            "title": "Period"
+          },
+          "lead": {
+            "type": "string",
+            "title": "Lead"
+          },
+          "lead_wording": {
+            "type": "string",
+            "title": "Lead Wording"
+          },
+          "active_alerts_total": {
+            "type": "integer",
+            "title": "Active Alerts Total"
+          },
+          "severe_alerts_count": {
+            "type": "integer",
+            "title": "Severe Alerts Count"
+          },
+          "warning_alerts_count": {
+            "type": "integer",
+            "title": "Warning Alerts Count"
+          },
+          "watch_alerts_count": {
+            "type": "integer",
+            "title": "Watch Alerts Count"
+          },
+          "normal_count": {
+            "type": "integer",
+            "title": "Normal Count"
+          },
+          "top_priority_district": {
+            "type": "string",
+            "title": "Top Priority District"
+          },
+          "statewide_mean_risk": {
+            "type": "number",
+            "title": "Statewide Mean Risk"
+          },
+          "top_5_robust": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Top 5 Robust"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "hazard",
+          "period",
+          "lead",
+          "lead_wording",
+          "active_alerts_total",
+          "severe_alerts_count",
+          "warning_alerts_count",
+          "watch_alerts_count",
+          "normal_count",
+          "top_priority_district",
+          "statewide_mean_risk",
+          "top_5_robust"
+        ],
+        "title": "OverviewResponse",
+        "description": "High-level summary of active alerts and statewide exposure."
+      },
+      "PeriodsResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "hazard": {
+            "type": "string",
+            "title": "Hazard",
+            "description": "Hazard identifier",
+            "default": "flood"
+          },
+          "periods": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Periods",
+            "description": "Chronological list of available monthly periods (YYYY-MM)"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "periods"
+        ],
+        "title": "PeriodsResponse",
+        "description": "List of precomputed chronological forecast periods."
+      },
+      "ProvenanceResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "spatial_units": {
+            "type": "integer",
+            "title": "Spatial Units"
+          },
+          "vintage": {
+            "type": "string",
+            "title": "Vintage"
+          },
+          "data_audit_summary": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Data Audit Summary"
+          },
+          "sar_independence_caveat": {
+            "type": "string",
+            "title": "Sar Independence Caveat"
+          },
+          "lead_time_limitation": {
+            "type": "string",
+            "title": "Lead Time Limitation"
+          },
+          "asdma_disclaimer": {
+            "type": "string",
+            "title": "Asdma Disclaimer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "mode",
+          "spatial_units",
+          "vintage",
+          "data_audit_summary",
+          "sar_independence_caveat",
+          "lead_time_limitation",
+          "asdma_disclaimer"
+        ],
+        "title": "ProvenanceResponse",
+        "description": "Audit provenance, synthetic circularity findings, and operational limitations."
+      },
+      "RankingResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "hazard": {
+            "type": "string",
+            "title": "Hazard"
+          },
+          "period": {
+            "type": "string",
+            "title": "Period"
+          },
+          "lead": {
+            "type": "string",
+            "title": "Lead"
+          },
+          "lead_wording": {
+            "type": "string",
+            "title": "Lead Wording"
+          },
+          "ranking": {
+            "items": {
+              "$ref": "#/components/schemas/ZoneItem"
+            },
+            "type": "array",
+            "title": "Ranking"
+          },
+          "top_5_robust": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Top 5 Robust",
+            "description": "List of district names with robust high-priority ranking"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "hazard",
+          "period",
+          "lead",
+          "lead_wording",
+          "ranking",
+          "top_5_robust"
+        ],
+        "title": "RankingResponse",
+        "description": "Sorted prioritization ranking for humanitarian response resource allocation."
+      },
+      "TimelineItem": {
+        "properties": {
+          "period": {
+            "type": "string",
+            "title": "Period"
+          },
+          "p_low": {
+            "type": "number",
+            "title": "P Low"
+          },
+          "p_mid": {
+            "type": "number",
+            "title": "P Mid"
+          },
+          "p_high": {
+            "type": "number",
+            "title": "P High"
+          },
+          "priority": {
+            "type": "number",
+            "title": "Priority"
+          },
+          "rank": {
+            "type": "integer",
+            "title": "Rank"
+          },
+          "rain_total_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rain Total Mm"
+          },
+          "rain_cum3m_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rain Cum3M Mm"
+          },
+          "rain_anom_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rain Anom Mm"
+          }
+        },
+        "type": "object",
+        "required": [
+          "period",
+          "p_low",
+          "p_mid",
+          "p_high",
+          "priority",
+          "rank"
+        ],
+        "title": "TimelineItem",
+        "description": "Monthly progression item for risk and precipitation."
+      },
+      "TimelineResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "zone_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Zone Id"
+          },
+          "district_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "District Name"
+          },
+          "hazard": {
+            "type": "string",
+            "title": "Hazard"
+          },
+          "timeline": {
+            "items": {
+              "$ref": "#/components/schemas/TimelineItem"
+            },
+            "type": "array",
+            "title": "Timeline"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "hazard",
+          "timeline"
+        ],
+        "title": "TimelineResponse",
+        "description": "Multi-period trajectory for a district or statewide aggregate."
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "ZoneAdvisoryItem": {
+        "properties": {
+          "zone_id": {
+            "type": "string",
+            "title": "Zone Id"
+          },
+          "district_name": {
+            "type": "string",
+            "title": "District Name"
+          },
+          "priority": {
+            "type": "number",
+            "title": "Priority"
+          },
+          "rank": {
+            "type": "integer",
+            "title": "Rank"
+          },
+          "advisory": {
+            "$ref": "#/components/schemas/AdvisoryModel"
+          }
+        },
+        "type": "object",
+        "required": [
+          "zone_id",
+          "district_name",
+          "priority",
+          "rank",
+          "advisory"
+        ],
+        "title": "ZoneAdvisoryItem",
+        "description": "District advisory pairing."
+      },
+      "ZoneDrivers": {
+        "properties": {
+          "rain_total_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rain Total Mm"
+          },
+          "rain_cum3m_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rain Cum3M Mm"
+          },
+          "rain_anom_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rain Anom Mm"
+          }
+        },
+        "type": "object",
+        "title": "ZoneDrivers",
+        "description": "Local precipitation and hydrologic drivers."
+      },
+      "ZoneItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Canonical geometry identifier (G01..G33)",
+            "examples": [
+              "G01"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Administrative district name",
+            "examples": [
+              "Baksa"
+            ]
+          },
+          "p_low": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "P Low",
+            "description": "Lower CQR conformalized uncertainty bound"
+          },
+          "p_mid": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "P Mid",
+            "description": "Calibrated flood exceedance probability"
+          },
+          "p_high": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "P High",
+            "description": "Upper CQR conformalized uncertainty bound"
+          },
+          "exposure": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Exposure",
+            "description": "Normalized multi-factor exposure score"
+          },
+          "priority": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Priority",
+            "description": "Response prioritization score (p_mid * exposure)"
+          },
+          "rank": {
+            "type": "integer",
+            "maximum": 33.0,
+            "minimum": 1.0,
+            "title": "Rank",
+            "description": "Statewide priority rank (1 = highest urgency)"
+          },
+          "robust": {
+            "type": "boolean",
+            "title": "Robust",
+            "description": "True if zone ranks in top 5 under both p_mid and p_high"
+          },
+          "drivers": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ZoneDrivers"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "observed_flood_km2": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observed Flood Km2",
+            "description": "Observed/extracted flooded area in square kilometers"
+          },
+          "observed_flood_frac": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observed Flood Frac",
+            "description": "Observed flood area as fraction of district area"
+          },
+          "advisory": {
+            "$ref": "#/components/schemas/AdvisoryModel",
+            "description": "Operational early warning advisory"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "p_low",
+          "p_mid",
+          "p_high",
+          "exposure",
+          "priority",
+          "rank",
+          "robust",
+          "advisory"
+        ],
+        "title": "ZoneItem",
+        "description": "District-level forecast and response prioritization entity."
+      },
+      "ZonesResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Response status ('ok', 'degraded', 'mock')",
+            "default": "ok"
+          },
+          "label_source": {
+            "type": "string",
+            "title": "Label Source",
+            "description": "Label family used: 'synthetic_augmentation' or 'sentinel1_derived'"
+          },
+          "warning": {
+            "type": "string",
+            "title": "Warning",
+            "description": "Operational honesty and data caveat warning string"
+          },
+          "hazard": {
+            "type": "string",
+            "title": "Hazard"
+          },
+          "granularity": {
+            "type": "string",
+            "title": "Granularity"
+          },
+          "period": {
+            "type": "string",
+            "title": "Period"
+          },
+          "lead": {
+            "type": "string",
+            "title": "Lead"
+          },
+          "lead_wording": {
+            "type": "string",
+            "title": "Lead Wording"
+          },
+          "zones": {
+            "items": {
+              "$ref": "#/components/schemas/ZoneItem"
+            },
+            "type": "array",
+            "title": "Zones"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label_source",
+          "warning",
+          "hazard",
+          "granularity",
+          "period",
+          "lead",
+          "lead_wording",
+          "zones"
+        ],
+        "title": "ZonesResponse",
+        "description": "Complete zone-level forecast collection for a period."
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "probability_with_band": {
+    "claim": "Predictive flood probability with calibrated uncertainty bands",
+    "status": "partly",
+    "evidence_file": "metrics/event_backtest.json",
+    "number": "80% nominal CQR interval achieves 90.7% holdout coverage in unit tests; out-of-fold bands generated for L0 and L1",
+    "notes": "Framework validated; real Sentinel-1 SAR observations absent in input archive."
+  },
+  "1_to_3_day_forecast": {
+    "claim": "1\u20133 day lead operational flood warning",
+    "status": "not_validated",
+    "evidence_file": "reports/model_card.md",
+    "number": null,
+    "notes": "Not validated. Prototype operates on monthly aggregation; daily labels do not exist."
+  },
+  "sar_extent": {
+    "claim": "Sentinel-1 SAR 30m flood inundation extent mapping",
+    "status": "not_validated",
+    "evidence_file": "gee/export_flood_features.py",
+    "number": null,
+    "notes": "Earth Engine export script generated; satellite CSVs absent in input archive."
+  },
+  "bhuvan_overlap": {
+    "claim": "ISRO Bhuvan historical flood layer spatial overlap",
+    "status": "not_validated",
+    "evidence_file": "reports/event_backtest.md",
+    "number": null,
+    "notes": "no reference layer supplied"
+  },
+  "ranking": {
+    "claim": "Multi-factor spatial exposure and response prioritization",
+    "status": "validated",
+    "evidence_file": "reports/priority_ranking_sensitivity.csv",
+    "number": "33 polygons ranked across all periods; +/-20% weight sensitivity table evaluated",
+    "notes": "Fully verified and operational."
+  },
+  "multi_hazard": {
+    "claim": "Modular multi-hazard early warning framework (Flood, Landslide, Heatwave)",
+    "status": "planned",
+    "evidence_file": "core/hazard.py",
+    "number": "BaseHazardModel interface implemented with build_features, build_labels, fit, predict, extent",
+    "notes": "Flood module completed; landslide and heat hazard interfaces defined for future integration."
+  }
+}

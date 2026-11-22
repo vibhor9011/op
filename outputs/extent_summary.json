@@ -1,0 +1,303 @@
+{
+  "period": "2019-07",
+  "year": 2019,
+  "month": 7,
+  "is_calibrated_proxy": true,
+  "dates": {
+    "event_window": "2019-07-01 to 2019-07-31",
+    "preevent_window": "2019-01-01 to 2019-02-28"
+  },
+  "thresholds": {
+    "fixed_vv_threshold_db": -16.0,
+    "otsu_vv_threshold_db": -16.85,
+    "jrc_occurrence_threshold_pct": 50,
+    "slope_max_deg": 5.0,
+    "merit_hand_max_m": 15.0,
+    "mmu_min_ha": 5.0
+  },
+  "scenes_used": {
+    "event_scenes": 24,
+    "preevent_scenes": 32,
+    "orbit_pass": "DESCENDING",
+    "mode": "IW",
+    "polarization": "VV"
+  },
+  "validation": {
+    "status": "visually validated only",
+    "reference_layer": null,
+    "iou": null,
+    "precision": null,
+    "recall": null,
+    "f1": null,
+    "caveat": "The training labels (sar_polygon_month) and this flood extent footprint both use Sentinel-1 IW VV thresholding and terrain masks (SRTM/MERIT/JRC), so they are NOT independent evidence of each other."
+  },
+  "statewide_flooded_km2": 5655.99,
+  "statewide_area_km2": 75616.1,
+  "statewide_share_of_valid_land": 0.0748,
+  "polygons": [
+    {
+      "geometry_id": "G01",
+      "district": "Baksa",
+      "flooded_km2": 115.27,
+      "area_km2": 2346.13,
+      "share_of_valid_land": 0.0491,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G02",
+      "district": "Barpeta",
+      "flooded_km2": 205.18,
+      "area_km2": 2202.64,
+      "share_of_valid_land": 0.0932,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G03",
+      "district": "Biswanath",
+      "flooded_km2": 144.47,
+      "area_km2": 1711.31,
+      "share_of_valid_land": 0.0844,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G04",
+      "district": "Bongaigaon",
+      "flooded_km2": 95.66,
+      "area_km2": 1050.5,
+      "share_of_valid_land": 0.0911,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G05",
+      "district": "Cachar",
+      "flooded_km2": 318.12,
+      "area_km2": 3644.06,
+      "share_of_valid_land": 0.0873,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G06",
+      "district": "Charaideo",
+      "flooded_km2": 52.23,
+      "area_km2": 1026.32,
+      "share_of_valid_land": 0.0509,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G07",
+      "district": "Chirang",
+      "flooded_km2": 111.58,
+      "area_km2": 1858.77,
+      "share_of_valid_land": 0.06,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G08",
+      "district": "Darrang",
+      "flooded_km2": 157.32,
+      "area_km2": 1524.62,
+      "share_of_valid_land": 0.1032,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G09",
+      "district": "Dhemaji",
+      "flooded_km2": 24.03,
+      "area_km2": 2402.58,
+      "share_of_valid_land": 0.01,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G10",
+      "district": "Dhubri",
+      "flooded_km2": 124.79,
+      "area_km2": 1494.75,
+      "share_of_valid_land": 0.0835,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G11",
+      "district": "Dibrugarh",
+      "flooded_km2": 421.93,
+      "area_km2": 3264.41,
+      "share_of_valid_land": 0.1293,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G12",
+      "district": "Dima Hasao",
+      "flooded_km2": 107.36,
+      "area_km2": 4709.27,
+      "share_of_valid_land": 0.0228,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G13",
+      "district": "Goalpara",
+      "flooded_km2": 232.27,
+      "area_km2": 1904.32,
+      "share_of_valid_land": 0.122,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G14",
+      "district": "Golaghat",
+      "flooded_km2": 33.99,
+      "area_km2": 3399.32,
+      "share_of_valid_land": 0.01,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G15",
+      "district": "Hailakandi",
+      "flooded_km2": 44.33,
+      "area_km2": 1272.11,
+      "share_of_valid_land": 0.0348,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G16",
+      "district": "Hojai",
+      "flooded_km2": 83.69,
+      "area_km2": 1400.43,
+      "share_of_valid_land": 0.0598,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G17",
+      "district": "Jorhat",
+      "flooded_km2": 163.55,
+      "area_km2": 1969.34,
+      "share_of_valid_land": 0.083,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G18",
+      "district": "Kamrup",
+      "flooded_km2": 272.6,
+      "area_km2": 2991.72,
+      "share_of_valid_land": 0.0911,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G19",
+      "district": "Kamrup Metropolitan",
+      "flooded_km2": 61.63,
+      "area_km2": 951.46,
+      "share_of_valid_land": 0.0648,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G20",
+      "district": "Karbi Anglong",
+      "flooded_km2": 311.74,
+      "area_km2": 7046.89,
+      "share_of_valid_land": 0.0442,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G21",
+      "district": "Karimganj",
+      "flooded_km2": 113.36,
+      "area_km2": 1772.08,
+      "share_of_valid_land": 0.064,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G22",
+      "district": "Kokrajhar",
+      "flooded_km2": 385.18,
+      "area_km2": 3012.96,
+      "share_of_valid_land": 0.1278,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G23",
+      "district": "Lakhimpur",
+      "flooded_km2": 297.03,
+      "area_km2": 2896.39,
+      "share_of_valid_land": 0.1026,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G24",
+      "district": "Majuli",
+      "flooded_km2": 46.09,
+      "area_km2": 762.16,
+      "share_of_valid_land": 0.0605,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G25",
+      "district": "Morigaon",
+      "flooded_km2": 171.79,
+      "area_km2": 1450.31,
+      "share_of_valid_land": 0.1184,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G26",
+      "district": "Nagaon",
+      "flooded_km2": 396.63,
+      "area_km2": 2478.95,
+      "share_of_valid_land": 0.16,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G27",
+      "district": "Nalbari",
+      "flooded_km2": 69.45,
+      "area_km2": 1013.13,
+      "share_of_valid_land": 0.0685,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G28",
+      "district": "Sivasagar",
+      "flooded_km2": 126.05,
+      "area_km2": 1511.87,
+      "share_of_valid_land": 0.0834,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G29",
+      "district": "Sonitpur",
+      "flooded_km2": 251.77,
+      "area_km2": 3324.27,
+      "share_of_valid_land": 0.0757,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G30",
+      "district": "South Salmara Mankachar",
+      "flooded_km2": 39.85,
+      "area_km2": 657.39,
+      "share_of_valid_land": 0.0606,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G31",
+      "district": "Tinsukia",
+      "flooded_km2": 473.76,
+      "area_km2": 3667.53,
+      "share_of_valid_land": 0.1292,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G32",
+      "district": "Udalguri",
+      "flooded_km2": 104.38,
+      "area_km2": 1935.51,
+      "share_of_valid_land": 0.0539,
+      "scenes_used": 18
+    },
+    {
+      "geometry_id": "G33",
+      "district": "West Karbi Anglong",
+      "flooded_km2": 98.91,
+      "area_km2": 2962.6,
+      "share_of_valid_land": 0.0334,
+      "scenes_used": 18
+    }
+  ]
+}

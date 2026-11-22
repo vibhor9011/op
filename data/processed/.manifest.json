@@ -1,0 +1,12 @@
+{
+  "input_zip_sha256": "82537d7fdfa4a9734518e7f2ce86c5508d0c84838a803e891f0f1479f88cc9b8",
+  "input_zip_path": "C:\\Users\\HARSHVARDHAN\\Desktop\\Aastra Hackathon\\OrbitGuard\\orbitguard_flood_data.zip",
+  "file_hashes": {
+    "Assam_Brahmaputra_District_Month_Training_2014_2025_SYNTHETIC.csv": "39bbccad05287c5d6c0ff63f43faf26edcdfe8013cf4b0e638a439886d3a8908",
+    "Assam_Flood_Training_Dataset_2014_2025.xlsx": "c67a6b6f32fbf56a026f6afe41060f4cb040b202e191231120ece89de5d02af9",
+    "Assam_Official_Annual_Flood_Anchors_2014_2025.csv": "67b7b1e976cbccb0b2c13384a7090fe3d7ce6cdf360412e838e357e1b7df62c5",
+    "assam_raw_districts.geojson": "ab80c26ae8603a4170f6b306275e4fb026248013764dbbc4b016ffec7da74027"
+  },
+  "intake_complete": true,
+  "has_ee_csvs": false
+}

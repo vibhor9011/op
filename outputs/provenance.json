@@ -1,0 +1,15 @@
+{
+  "label_source": "synthetic_augmentation",
+  "warning": "PIPELINE CHECK ONLY - no observed-derived labels",
+  "mode": "DEGRADED_MODE",
+  "spatial_units": 33,
+  "vintage": "2014-2025",
+  "data_audit_summary": {
+    "synthetic_flag_positive_rate": 0.9337,
+    "circularity_ratio_range": "0.911 - 0.960",
+    "circularity_finding": "Synthetic totals track official statewide anchors at a near-constant ~91-96% ratio, proving top-down circular derivation."
+  },
+  "sar_independence_caveat": "The training labels (sar_polygon_month) and single-event SAR footprints use the same Sentinel-1 IW VV thresholding and terrain masks, and are NOT independent evidence of each other.",
+  "lead_time_limitation": "1-3 day forecast claims from pitch deck are not validated; prototype operates at monthly granularity.",
+  "asdma_disclaimer": "Decision support only; confirm with ASDMA/IMD official advisories."
+}

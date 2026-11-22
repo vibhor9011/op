@@ -1,0 +1,679 @@
+{
+ "note": "ILLUSTRATIVE DEMO SPEC. District rainfall, exposure, floodplain fractions and boundaries are demo values, not official data. Population is approx. 2011 census, rounded.",
+ "features": [
+  "rain_1d",
+  "rain_3d",
+  "rain_trend",
+  "elevation_m",
+  "river_dist_km",
+  "lead_day"
+ ],
+ "feature_labels": {
+  "rain_1d": "Latest-day rainfall",
+  "rain_3d": "3-day rainfall build-up",
+  "rain_trend": "Rainfall trend (last day minus first)",
+  "elevation_m": "Elevation",
+  "river_dist_km": "Distance to river",
+  "lead_day": "Forecast lead"
+ },
+ "feature_units": {
+  "rain_1d": "mm",
+  "rain_3d": "mm",
+  "rain_trend": "mm",
+  "elevation_m": "m",
+  "river_dist_km": "km",
+  "lead_day": "d"
+ },
+ "generator": {
+  "b0": -4.0,
+  "r3": 0.11,
+  "r1": 0.02,
+  "tr": 0.03,
+  "el": 0.01,
+  "el_ref": 70,
+  "rd": 0.05,
+  "sd0": 0.3,
+  "sd1": 0.2
+ },
+ "baseline": {
+  "rain_1d": 9.0,
+  "rain_3d": 27.0,
+  "rain_trend": 0.0,
+  "elevation_m": 70.0,
+  "river_dist_km": 9.0,
+  "lead_day": 1.5
+ },
+ "tiers": {
+  "high": 0.35,
+  "moderate": 0.15
+ },
+ "hazard_prob_threshold": 0.5,
+ "river_centerline": [
+  [
+   94.9,
+   27.4
+  ],
+  [
+   94.4,
+   27.25
+  ],
+  [
+   94.0,
+   27.0
+  ],
+  [
+   93.5,
+   26.72
+  ],
+  [
+   93.0,
+   26.62
+  ],
+  [
+   92.6,
+   26.55
+  ],
+  [
+   92.2,
+   26.4
+  ],
+  [
+   91.8,
+   26.2
+  ],
+  [
+   91.3,
+   26.18
+  ],
+  [
+   90.8,
+   26.2
+  ],
+  [
+   90.4,
+   26.2
+  ],
+  [
+   90.0,
+   26.15
+  ],
+  [
+   89.7,
+   26.1
+  ]
+ ],
+ "districts": [
+  {
+   "id": "dhemaji",
+   "name": "Dhemaji",
+   "centroid": [
+    27.48,
+    94.56
+   ],
+   "polygon": [
+    [
+     94.8549,
+     27.5036
+    ],
+    [
+     94.7887,
+     27.5762
+    ],
+    [
+     94.6496,
+     27.6923
+    ],
+    [
+     94.4517,
+     27.6438
+    ],
+    [
+     94.3409,
+     27.5915
+    ],
+    [
+     94.3196,
+     27.4808
+    ],
+    [
+     94.3721,
+     27.3564
+    ],
+    [
+     94.4886,
+     27.3128
+    ],
+    [
+     94.6879,
+     27.2857
+    ],
+    [
+     94.8016,
+     27.3354
+    ],
+    [
+     94.8549,
+     27.5036
+    ]
+   ],
+   "default_rain_mm": [
+    11,
+    12,
+    20
+   ],
+   "elevation_m": 104,
+   "river_dist_km": 6,
+   "population_lakh": 6.88,
+   "exposure": 0.62,
+   "floodplain_frac": 0.45
+  },
+  {
+   "id": "lakhimpur",
+   "name": "Lakhimpur",
+   "centroid": [
+    27.24,
+    94.1
+   ],
+   "polygon": [
+    [
+     94.2922,
+     27.2574
+    ],
+    [
+     94.3078,
+     27.3949
+    ],
+    [
+     94.2251,
+     27.453
+    ],
+    [
+     94.007,
+     27.4175
+    ],
+    [
+     93.9009,
+     27.3744
+    ],
+    [
+     93.8535,
+     27.2474
+    ],
+    [
+     93.9488,
+     27.1392
+    ],
+    [
+     94.0408,
+     27.025
+    ],
+    [
+     94.2176,
+     27.0423
+    ],
+    [
+     94.3218,
+     27.1191
+    ],
+    [
+     94.2922,
+     27.2574
+    ]
+   ],
+   "default_rain_mm": [
+    9,
+    14,
+    16
+   ],
+   "elevation_m": 100,
+   "river_dist_km": 8,
+   "population_lakh": 10.42,
+   "exposure": 0.58,
+   "floodplain_frac": 0.4
+  },
+  {
+   "id": "golaghat",
+   "name": "Golaghat",
+   "centroid": [
+    26.52,
+    93.96
+   ],
+   "polygon": [
+    [
+     94.2621,
+     26.522
+    ],
+    [
+     94.1868,
+     26.6367
+    ],
+    [
+     94.0638,
+     26.7964
+    ],
+    [
+     93.8406,
+     26.8018
+    ],
+    [
+     93.7602,
+     26.6545
+    ],
+    [
+     93.6097,
+     26.5506
+    ],
+    [
+     93.6945,
+     26.3598
+    ],
+    [
+     93.8738,
+     26.2228
+    ],
+    [
+     94.019,
+     26.2531
+    ],
+    [
+     94.2725,
+     26.342
+    ],
+    [
+     94.2621,
+     26.522
+    ]
+   ],
+   "default_rain_mm": [
+    5,
+    6,
+    8
+   ],
+   "elevation_m": 90,
+   "river_dist_km": 14,
+   "population_lakh": 10.67,
+   "exposure": 0.55,
+   "floodplain_frac": 0.25
+  },
+  {
+   "id": "nagaon",
+   "name": "Nagaon",
+   "centroid": [
+    26.35,
+    92.68
+   ],
+   "polygon": [
+    [
+     92.9565,
+     26.3498
+    ],
+    [
+     92.8984,
+     26.5137
+    ],
+    [
+     92.7559,
+     26.5434
+    ],
+    [
+     92.6066,
+     26.5966
+    ],
+    [
+     92.487,
+     26.4773
+    ],
+    [
+     92.407,
+     26.3677
+    ],
+    [
+     92.4494,
+     26.1531
+    ],
+    [
+     92.6402,
+     26.1477
+    ],
+    [
+     92.7443,
+     26.0942
+    ],
+    [
+     92.8635,
+     26.1891
+    ],
+    [
+     92.9565,
+     26.3498
+    ]
+   ],
+   "default_rain_mm": [
+    6,
+    8,
+    9
+   ],
+   "elevation_m": 55,
+   "river_dist_km": 9,
+   "population_lakh": 28.92,
+   "exposure": 1.0,
+   "floodplain_frac": 0.3
+  },
+  {
+   "id": "morigaon",
+   "name": "Morigaon",
+   "centroid": [
+    26.24,
+    92.3
+   ],
+   "polygon": [
+    [
+     92.522,
+     26.2337
+    ],
+    [
+     92.4564,
+     26.3637
+    ],
+    [
+     92.3487,
+     26.3914
+    ],
+    [
+     92.2112,
+     26.4321
+    ],
+    [
+     92.1543,
+     26.3712
+    ],
+    [
+     92.0993,
+     26.2255
+    ],
+    [
+     92.1437,
+     26.0974
+    ],
+    [
+     92.2348,
+     26.0674
+    ],
+    [
+     92.3596,
+     26.0964
+    ],
+    [
+     92.409,
+     26.128
+    ],
+    [
+     92.522,
+     26.2337
+    ]
+   ],
+   "default_rain_mm": [
+    8,
+    12,
+    15
+   ],
+   "elevation_m": 52,
+   "river_dist_km": 4,
+   "population_lakh": 9.57,
+   "exposure": 0.7,
+   "floodplain_frac": 0.5
+  },
+  {
+   "id": "nalbari",
+   "name": "Nalbari",
+   "centroid": [
+    26.45,
+    91.44
+   ],
+   "polygon": [
+    [
+     91.721,
+     26.4486
+    ],
+    [
+     91.6629,
+     26.591
+    ],
+    [
+     91.5225,
+     26.6858
+    ],
+    [
+     91.3735,
+     26.6592
+    ],
+    [
+     91.241,
+     26.5734
+    ],
+    [
+     91.1694,
+     26.4645
+    ],
+    [
+     91.2509,
+     26.3041
+    ],
+    [
+     91.386,
+     26.2943
+    ],
+    [
+     91.5292,
+     26.2774
+    ],
+    [
+     91.5911,
+     26.325
+    ],
+    [
+     91.721,
+     26.4486
+    ]
+   ],
+   "default_rain_mm": [
+    3,
+    4,
+    5
+   ],
+   "elevation_m": 45,
+   "river_dist_km": 7,
+   "population_lakh": 7.69,
+   "exposure": 0.5,
+   "floodplain_frac": 0.3
+  },
+  {
+   "id": "barpeta",
+   "name": "Barpeta",
+   "centroid": [
+    26.32,
+    90.98
+   ],
+   "polygon": [
+    [
+     91.1582,
+     26.3093
+    ],
+    [
+     91.1961,
+     26.4347
+    ],
+    [
+     91.0385,
+     26.4807
+    ],
+    [
+     90.9375,
+     26.5377
+    ],
+    [
+     90.8202,
+     26.423
+    ],
+    [
+     90.8167,
+     26.3425
+    ],
+    [
+     90.8459,
+     26.1803
+    ],
+    [
+     90.8855,
+     26.0734
+    ],
+    [
+     91.068,
+     26.0928
+    ],
+    [
+     91.1186,
+     26.2286
+    ],
+    [
+     91.1582,
+     26.3093
+    ]
+   ],
+   "default_rain_mm": [
+    7,
+    10,
+    13
+   ],
+   "elevation_m": 40,
+   "river_dist_km": 5,
+   "population_lakh": 16.93,
+   "exposure": 0.8,
+   "floodplain_frac": 0.45
+  },
+  {
+   "id": "dhubri",
+   "name": "Dhubri",
+   "centroid": [
+    26.02,
+    89.98
+   ],
+   "polygon": [
+    [
+     90.3308,
+     26.0546
+    ],
+    [
+     90.2682,
+     26.1918
+    ],
+    [
+     90.0599,
+     26.2844
+    ],
+    [
+     89.8994,
+     26.3021
+    ],
+    [
+     89.7118,
+     26.1544
+    ],
+    [
+     89.6967,
+     26.0242
+    ],
+    [
+     89.8016,
+     25.8869
+    ],
+    [
+     89.8906,
+     25.8248
+    ],
+    [
+     90.1454,
+     25.7692
+    ],
+    [
+     90.2467,
+     25.8243
+    ],
+    [
+     90.3308,
+     26.0546
+    ]
+   ],
+   "default_rain_mm": [
+    4,
+    6,
+    7
+   ],
+   "elevation_m": 33,
+   "river_dist_km": 3,
+   "population_lakh": 19.49,
+   "exposure": 0.85,
+   "floodplain_frac": 0.4
+  }
+ ],
+ "advisories": {
+  "HIGH": {
+   "ALL": [
+    "Red alert for {district}: push SMS / cell-broadcast to low-lying and riverine villages",
+    "Prepare relief camps and move stocks to higher ground"
+   ],
+   "SDRF": [
+    "Pre-position rescue teams and boats at {district} HQ",
+    "Stage teams near embankment sections flagged as vulnerable"
+   ],
+   "SDMA": [
+    "Activate State EOC watch for {district}",
+    "Coordinate with Water Resources on embankment and breach watch"
+   ],
+   "DISTRICT": [
+    "Convene DDMA; begin phased evacuation of riverine villages",
+    "Open relief camps and confirm medical stock"
+   ],
+   "NGO": [
+    "Mobilise volunteers and dry rations for relief camps",
+    "Share camp needs with the district control room"
+   ]
+  },
+  "MODERATE": {
+   "ALL": [
+    "Orange alert for {district}: monitor river gauges and rainfall every 6 h",
+    "Brief village-level disaster committees"
+   ],
+   "SDRF": [
+    "Keep teams on standby; verify boat and equipment readiness"
+   ],
+   "SDMA": [
+    "Track {district} in the daily situation report; keep EOC on alert"
+   ],
+   "DISTRICT": [
+    "Review evacuation routes and relief-camp readiness",
+    "Alert block-level officers in low-lying circles"
+   ],
+   "NGO": [
+    "Check volunteer rosters and relief stock; await district call-up"
+   ]
+  },
+  "LOW": {
+   "ALL": [
+    "Routine watch for {district}; no action beyond normal monitoring"
+   ],
+   "SDRF": [
+    "No deployment needed; routine readiness"
+   ],
+   "SDMA": [
+    "Re-check at the next forecast update"
+   ],
+   "DISTRICT": [
+    "Maintain normal monitoring"
+   ],
+   "NGO": [
+    "No action; stay informed"
+   ]
+  }
+ }
+}

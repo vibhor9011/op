@@ -1,0 +1,1 @@
+geometry_id,year,month,flood_frac_valid,s1_n_scenes,s1_coverage,sar_label_usable,label_source,is_synthetic_label,rain_lag1_mm,rain_lag2_mm,rain_cum3m_mm,rain_cum6m_mm

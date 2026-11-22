@@ -1,0 +1,31 @@
+# OrbitGuard: Rule-Based Advisory Actions Configuration
+# Editable template rules for district-level early response prioritization.
+# These actions are generic operational steps for ASDMA and district authorities.
+
+threshold: 0.05
+
+disclaimer: "Decision support only; confirm with ASDMA/IMD official advisories."
+
+confidence_bands:
+  high_max_width: 0.08
+  medium_max_width: 0.18
+
+actions:
+  Severe:
+    - "Pre-position boats and SDRF teams for immediate deployment"
+    - "Open relief camps and stage dry rations, drinking water, and medical kits"
+    - "Initiate precautionary evacuation of low-lying riverine settlements"
+    - "Inspect and reinforce vulnerable embankments and critical breach points"
+  Warning:
+    - "Pre-position boats and SDRF teams in high-risk revenue circles"
+    - "Issue community alerts and activate 24/7 District Emergency Operation Centers (DEOC)"
+    - "Check embankments, sluice gates, and vulnerable drainage culverts"
+    - "Identify flood shelters and ensure standby power and clean water supplies"
+  Watch:
+    - "Issue community alerts and advisories to riverine populations"
+    - "Monitor IMD local weather radar and CWC river gauge feeds"
+    - "Check embankments and clear blocked municipal/rural drainage channels"
+    - "Place disaster response volunteers and circle quick response teams on standby"
+  Normal:
+    - "Routine seasonal monitoring of hydro-meteorological indicators"
+    - "Maintain standard readiness protocols across district emergency cells"

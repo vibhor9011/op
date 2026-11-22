@@ -1,0 +1,443 @@
+{
+  "results": {
+    "model": "M7_Secondary_LightGBM_Severity",
+    "label_source": "synthetic_augmentation",
+    "warning": "PIPELINE CHECK ONLY - no observed-derived labels (Secondary synthetic verification)",
+    "cv_strategy": "Leave-One-Year-Out (2014-2025, 12 folds)",
+    "metrics": {
+      "RMSE": 2.6312,
+      "MAE": 1.7587,
+      "R2": -0.0774
+    },
+    "plot_path": "reports\\m7_synthetic_loyo_evaluation.png"
+  },
+  "claims_table": {
+    "probability_with_band": {
+      "claim": "Predictive flood probability with calibrated uncertainty bands",
+      "status": "partly",
+      "evidence_file": "metrics/event_backtest.json",
+      "number": "80% nominal CQR interval achieves 90.7% holdout coverage in unit tests; out-of-fold bands generated for L0 and L1",
+      "notes": "Framework validated; real Sentinel-1 SAR observations absent in input archive."
+    },
+    "1_to_3_day_forecast": {
+      "claim": "1\u20133 day lead operational flood warning",
+      "status": "not_validated",
+      "evidence_file": "reports/model_card.md",
+      "number": null,
+      "notes": "Not validated. Prototype operates on monthly aggregation; daily labels do not exist."
+    },
+    "sar_extent": {
+      "claim": "Sentinel-1 SAR 30m flood inundation extent mapping",
+      "status": "not_validated",
+      "evidence_file": "gee/export_flood_features.py",
+      "number": null,
+      "notes": "Earth Engine export script generated; satellite CSVs absent in input archive."
+    },
+    "bhuvan_overlap": {
+      "claim": "ISRO Bhuvan historical flood layer spatial overlap",
+      "status": "not_validated",
+      "evidence_file": "reports/event_backtest.md",
+      "number": null,
+      "notes": "no reference layer supplied"
+    },
+    "ranking": {
+      "claim": "Multi-factor spatial exposure and response prioritization",
+      "status": "validated",
+      "evidence_file": "reports/priority_ranking_sensitivity.csv",
+      "number": "33 polygons ranked across all periods; +/-20% weight sensitivity table evaluated",
+      "notes": "Fully verified and operational."
+    },
+    "multi_hazard": {
+      "claim": "Modular multi-hazard early warning framework (Flood, Landslide, Heatwave)",
+      "status": "planned",
+      "evidence_file": "core/hazard.py",
+      "number": "BaseHazardModel interface implemented with build_features, build_labels, fit, predict, extent",
+      "notes": "Flood module completed; landslide and heat hazard interfaces defined for future integration."
+    }
+  },
+  "lead_time": {
+    "lead_time_granularity": "monthly",
+    "limitation": "Monthly aggregation only; daily 1-3 day operational lead time is NOT validated (daily labels do not exist).",
+    "summary_across_events": {
+      "total_flooded_polygon_months": 350,
+      "flagged_one_month_prior": 295,
+      "overall_share_flagged": 0.8429,
+      "median_probability_one_month_prior": 0.854
+    },
+    "events": {
+      "2019": {
+        "year": 2019,
+        "in_fold_f1_threshold": 0.3914,
+        "total_flooded_polygon_months": 120,
+        "flagged_one_month_prior": 99,
+        "share_flagged": 0.825,
+        "median_prob_one_month_prior": 0.8595
+      },
+      "2020": {
+        "year": 2020,
+        "in_fold_f1_threshold": 0.3914,
+        "total_flooded_polygon_months": 117,
+        "flagged_one_month_prior": 100,
+        "share_flagged": 0.8547,
+        "median_prob_one_month_prior": 0.8275
+      },
+      "2022": {
+        "year": 2022,
+        "in_fold_f1_threshold": 0.4155,
+        "total_flooded_polygon_months": 113,
+        "flagged_one_month_prior": 96,
+        "share_flagged": 0.8496,
+        "median_prob_one_month_prior": 0.8742
+      }
+    }
+  },
+  "event_backtest": {
+    "severe_events_selected": [
+      2019,
+      2020,
+      2022
+    ],
+    "selection_rule": "Highest official statewide affected population: 2019 (7.3M), 2020 (5.8M), 2022 (5.7M); SAR flooded area null (degraded mode)",
+    "extent_overlap": {
+      "status": null,
+      "iou": null,
+      "f1": null,
+      "reason": "no reference layer supplied"
+    },
+    "events": {
+      "2019": {
+        "year": 2019,
+        "official_affected_persons": 7305000,
+        "peak_month": 7,
+        "mae_l1": 0.2408,
+        "cal_in_large_l1": -0.1098,
+        "top10_peak": {
+          "hits": 4,
+          "misses": 6,
+          "false_alarms": 6,
+          "top10_predicted_polygons": [
+            "G01",
+            "G02",
+            "G04",
+            "G10",
+            "G13",
+            "G18",
+            "G19",
+            "G22",
+            "G27",
+            "G30"
+          ],
+          "top10_observed_polygons": [
+            "G01",
+            "G02",
+            "G08",
+            "G11",
+            "G13",
+            "G22",
+            "G23",
+            "G25",
+            "G26",
+            "G31"
+          ]
+        },
+        "monthly_lead_time": {
+          "in_fold_f1_threshold": 0.3914,
+          "total_flooded_polygon_months": 120,
+          "flagged_one_month_prior": 99,
+          "share_flagged": 0.825,
+          "median_prob_one_month_prior": 0.8595
+        },
+        "monthly_timeline": [
+          {
+            "month": 5,
+            "obs_severe_frac": 0.2121,
+            "obs_pop_sum": 404114,
+            "p_mid_l0": 0.065,
+            "p_low_l0": 0.0487,
+            "p_high_l0": 0.2987,
+            "p_mid_l1": 0.0413,
+            "p_low_l1": 0.0289,
+            "p_high_l1": 0.3289
+          },
+          {
+            "month": 6,
+            "obs_severe_frac": 0.8788,
+            "obs_pop_sum": 1589104,
+            "p_mid_l0": 0.1963,
+            "p_low_l0": 0.1472,
+            "p_high_l0": 0.3972,
+            "p_mid_l1": 0.6557,
+            "p_low_l1": 0.459,
+            "p_high_l1": 0.759
+          },
+          {
+            "month": 7,
+            "obs_severe_frac": 0.9091,
+            "obs_pop_sum": 2256571,
+            "p_mid_l0": 0.1981,
+            "p_low_l0": 0.1486,
+            "p_high_l0": 0.3986,
+            "p_mid_l1": 0.8089,
+            "p_low_l1": 0.5663,
+            "p_high_l1": 0.8663
+          },
+          {
+            "month": 8,
+            "obs_severe_frac": 0.8485,
+            "obs_pop_sum": 1350002,
+            "p_mid_l0": 0.1953,
+            "p_low_l0": 0.1465,
+            "p_high_l0": 0.3965,
+            "p_mid_l1": 0.8129,
+            "p_low_l1": 0.569,
+            "p_high_l1": 0.869
+          },
+          {
+            "month": 9,
+            "obs_severe_frac": 0.5455,
+            "obs_pop_sum": 734549,
+            "p_mid_l0": 0.142,
+            "p_low_l0": 0.1065,
+            "p_high_l0": 0.3565,
+            "p_mid_l1": 0.592,
+            "p_low_l1": 0.4144,
+            "p_high_l1": 0.7144
+          },
+          {
+            "month": 10,
+            "obs_severe_frac": 0.2424,
+            "obs_pop_sum": 456216,
+            "p_mid_l0": 0.0316,
+            "p_low_l0": 0.0237,
+            "p_high_l0": 0.2737,
+            "p_mid_l1": 0.0669,
+            "p_low_l1": 0.0468,
+            "p_high_l1": 0.3468
+          }
+        ]
+      },
+      "2020": {
+        "year": 2020,
+        "official_affected_persons": 5789000,
+        "peak_month": 7,
+        "mae_l1": 0.2434,
+        "cal_in_large_l1": -0.1283,
+        "top10_peak": {
+          "hits": 3,
+          "misses": 7,
+          "false_alarms": 7,
+          "top10_predicted_polygons": [
+            "G01",
+            "G02",
+            "G04",
+            "G07",
+            "G10",
+            "G18",
+            "G19",
+            "G22",
+            "G27",
+            "G30"
+          ],
+          "top10_observed_polygons": [
+            "G01",
+            "G02",
+            "G09",
+            "G10",
+            "G11",
+            "G23",
+            "G25",
+            "G26",
+            "G28",
+            "G31"
+          ]
+        },
+        "monthly_lead_time": {
+          "in_fold_f1_threshold": 0.3914,
+          "total_flooded_polygon_months": 117,
+          "flagged_one_month_prior": 100,
+          "share_flagged": 0.8547,
+          "median_prob_one_month_prior": 0.8275
+        },
+        "monthly_timeline": [
+          {
+            "month": 5,
+            "obs_severe_frac": 0.2121,
+            "obs_pop_sum": 423616,
+            "p_mid_l0": 0.0518,
+            "p_low_l0": 0.0389,
+            "p_high_l0": 0.2889,
+            "p_mid_l1": 0.0597,
+            "p_low_l1": 0.0418,
+            "p_high_l1": 0.3418
+          },
+          {
+            "month": 6,
+            "obs_severe_frac": 0.8182,
+            "obs_pop_sum": 1254279,
+            "p_mid_l0": 0.1854,
+            "p_low_l0": 0.139,
+            "p_high_l0": 0.389,
+            "p_mid_l1": 0.5859,
+            "p_low_l1": 0.4102,
+            "p_high_l1": 0.7102
+          },
+          {
+            "month": 7,
+            "obs_severe_frac": 0.8182,
+            "obs_pop_sum": 1324148,
+            "p_mid_l0": 0.1933,
+            "p_low_l0": 0.145,
+            "p_high_l0": 0.395,
+            "p_mid_l1": 0.7731,
+            "p_low_l1": 0.5412,
+            "p_high_l1": 0.8412
+          },
+          {
+            "month": 8,
+            "obs_severe_frac": 0.7879,
+            "obs_pop_sum": 1151571,
+            "p_mid_l0": 0.1854,
+            "p_low_l0": 0.139,
+            "p_high_l0": 0.389,
+            "p_mid_l1": 0.6362,
+            "p_low_l1": 0.4453,
+            "p_high_l1": 0.7453
+          },
+          {
+            "month": 9,
+            "obs_severe_frac": 0.6667,
+            "obs_pop_sum": 868726,
+            "p_mid_l0": 0.1388,
+            "p_low_l0": 0.1041,
+            "p_high_l0": 0.3541,
+            "p_mid_l1": 0.5597,
+            "p_low_l1": 0.3918,
+            "p_high_l1": 0.6918
+          },
+          {
+            "month": 10,
+            "obs_severe_frac": 0.2424,
+            "obs_pop_sum": 452416,
+            "p_mid_l0": 0.0566,
+            "p_low_l0": 0.0424,
+            "p_high_l0": 0.2924,
+            "p_mid_l1": 0.1613,
+            "p_low_l1": 0.1129,
+            "p_high_l1": 0.4129
+          }
+        ]
+      },
+      "2022": {
+        "year": 2022,
+        "official_affected_persons": 5750000,
+        "peak_month": 8,
+        "mae_l1": 0.228,
+        "cal_in_large_l1": -0.0625,
+        "top10_peak": {
+          "hits": 6,
+          "misses": 4,
+          "false_alarms": 4,
+          "top10_predicted_polygons": [
+            "G01",
+            "G02",
+            "G03",
+            "G08",
+            "G10",
+            "G13",
+            "G18",
+            "G25",
+            "G26",
+            "G30"
+          ],
+          "top10_observed_polygons": [
+            "G01",
+            "G02",
+            "G08",
+            "G09",
+            "G10",
+            "G23",
+            "G25",
+            "G26",
+            "G29",
+            "G31"
+          ]
+        },
+        "monthly_lead_time": {
+          "in_fold_f1_threshold": 0.4155,
+          "total_flooded_polygon_months": 113,
+          "flagged_one_month_prior": 96,
+          "share_flagged": 0.8496,
+          "median_prob_one_month_prior": 0.8742
+        },
+        "monthly_timeline": [
+          {
+            "month": 5,
+            "obs_severe_frac": 0.2424,
+            "obs_pop_sum": 543149,
+            "p_mid_l0": 0.0414,
+            "p_low_l0": 0.031,
+            "p_high_l0": 0.281,
+            "p_mid_l1": 0.0304,
+            "p_low_l1": 0.0213,
+            "p_high_l1": 0.3213
+          },
+          {
+            "month": 6,
+            "obs_severe_frac": 0.8485,
+            "obs_pop_sum": 1161518,
+            "p_mid_l0": 0.1385,
+            "p_low_l0": 0.1039,
+            "p_high_l0": 0.3539,
+            "p_mid_l1": 0.7725,
+            "p_low_l1": 0.5408,
+            "p_high_l1": 0.8408
+          },
+          {
+            "month": 7,
+            "obs_severe_frac": 0.8182,
+            "obs_pop_sum": 1199081,
+            "p_mid_l0": 0.144,
+            "p_low_l0": 0.108,
+            "p_high_l0": 0.358,
+            "p_mid_l1": 0.7973,
+            "p_low_l1": 0.5581,
+            "p_high_l1": 0.8581
+          },
+          {
+            "month": 8,
+            "obs_severe_frac": 0.8788,
+            "obs_pop_sum": 1272526,
+            "p_mid_l0": 0.1373,
+            "p_low_l0": 0.103,
+            "p_high_l0": 0.353,
+            "p_mid_l1": 0.6985,
+            "p_low_l1": 0.489,
+            "p_high_l1": 0.789
+          },
+          {
+            "month": 9,
+            "obs_severe_frac": 0.6364,
+            "obs_pop_sum": 757677,
+            "p_mid_l0": 0.1104,
+            "p_low_l0": 0.0828,
+            "p_high_l0": 0.3328,
+            "p_mid_l1": 0.5939,
+            "p_low_l1": 0.4157,
+            "p_high_l1": 0.7157
+          },
+          {
+            "month": 10,
+            "obs_severe_frac": 0.0,
+            "obs_pop_sum": 358218,
+            "p_mid_l0": 0.0405,
+            "p_low_l0": 0.0304,
+            "p_high_l0": 0.2804,
+            "p_mid_l1": 0.1563,
+            "p_low_l1": 0.1094,
+            "p_high_l1": 0.4094
+          }
+        ]
+      }
+    }
+  }
+}

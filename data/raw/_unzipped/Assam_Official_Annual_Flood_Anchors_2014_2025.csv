@@ -1,0 +1,13 @@
+year,population_affected_lakh,human_lives_lost,cattle_lost,crop_area_affected_lakh_ha,population_affected_persons,fully_severely_houses_damaged,partially_damaged_houses,large_livestock_affected,small_livestock_affected,poultry_affected,record_type,source
+2014,42.03,90,28,3.67,4203000,54088,82095,,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2015,36.67,66,212,3.38,3667000,6058,57429,2488,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2016,39.81,64,5580,2.35,3981000,,,,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2017,56.02,160,449,3.98,5602000,,,,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2018,13.22,53,556,0.31,1322000,,,,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2019,73.05,101,250,2.15,7305000,,,,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2020,57.89,150,702,1.88,5789000,,,,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2021,5.74,3,13,0.65,574000,1242,1819,0,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2022,57.5,179,2700,1.08,5750000,,,,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2023,13.47,18,103,0.21,1347000,,,,,,official_statewide_annual,NRSC-ASDMA Flood Hazard Zonation Atlas 1998-2023; Flood Memorandum
+2024,,,,0.4958043,,7797,133171,1165,2048,4036,official_statewide_annual_partial,Assam Flood Memorandum 2024
+2025,11.19,36,,,1119000,,,,,,official_statewide_annual_partial,"Economic Survey Assam 2025-26; annual total approx. 11.19 lakh, flood/landslide deaths combined"

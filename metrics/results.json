@@ -1,0 +1,12 @@
+{
+  "model": "M7_Secondary_LightGBM_Severity",
+  "label_source": "synthetic_augmentation",
+  "warning": "PIPELINE CHECK ONLY - no observed-derived labels (Secondary synthetic verification)",
+  "cv_strategy": "Leave-One-Year-Out (2014-2025, 12 folds)",
+  "metrics": {
+    "RMSE": 2.6312,
+    "MAE": 1.7587,
+    "R2": -0.0774
+  },
+  "plot_path": "reports\\m7_synthetic_loyo_evaluation.png"
+}

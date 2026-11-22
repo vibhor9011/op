@@ -1,0 +1,33 @@
+{
+  "project": "OrbitGuard",
+  "version": "1.0",
+  "git_tag": "v1.0",
+  "git_commit_hash": "4ede60c1e9b9270ea90d526ddccd8e6a7fb926dc",
+  "freeze_timestamp": "2026-11-22T02:42:00+05:30",
+  "pipeline_mode": "DEGRADED_MODE",
+  "pipeline_mode_reason": "Earth Engine Sentinel-1 / CHIRPS CSVs absent from raw intake; graceful degradation to synthetic training table",
+  "test_status": "46 passed, 0 failed in 29.92s",
+  "consistency_status": "Zero orphan numbers across docs/claims_audit.md and docs/demo_script.md",
+  "reproducibility": "Confirmed bit-for-bit identical metrics across clean sequential runs with fixed seeds (seed=42)",
+  "manifest_hashes": {
+    "input_zip_sha256": "82537d7fdfa4a9734518e7f2ce86c5508d0c84838a803e891f0f1479f88cc9b8",
+    "file_hashes": {
+      "Assam_Brahmaputra_District_Month_Training_2014_2025_SYNTHETIC.csv": "39bbccad05287c5d6c0ff63f43faf26edcdfe8013cf4b0e638a439886d3a8908",
+      "Assam_Flood_Training_Dataset_2014_2025.xlsx": "c67a6b6f32fbf56a026f6afe41060f4cb040b202e191231120ece89de5d02af9",
+      "Assam_Official_Annual_Flood_Anchors_2014_2025.csv": "67b7b1e976cbccb0b2c13384a7090fe3d7ce6cdf360412e838e357e1b7df62c5",
+      "assam_raw_districts.geojson": "ab80c26ae8603a4170f6b306275e4fb026248013764dbbc4b016ffec7da74027"
+    }
+  },
+  "key_metrics_summary": {
+    "loyo_forecast_roc_auc": 0.9360,
+    "loyo_forecast_pr_auc": 0.8687,
+    "optimal_f1": 0.8328,
+    "optimal_threshold": 0.40,
+    "permutation_p_value": 0.0476,
+    "empirical_null_auc_mean": 0.7733,
+    "lead_time_monthly_share_flagged": 0.50,
+    "lead_time_monthly_median_p_mid": 0.3957,
+    "cqr_target_coverage": 0.80,
+    "cqr_empirical_coverage": 0.80
+  }
+}
